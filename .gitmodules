@@ -1,0 +1,6 @@
+[submodule "VsCodeDotfiles"]
+	path = VsCodeDotfiles
+	url = https://github.com/Ldbonequi/VsCodeDotfiles.git
+[submodule "nixos/dotfiles/VsCodeDotfiles"]
+	path = nixos/dotfiles/VsCodeDotfiles
+	url = https://github.com/Ldbonequi/VsCodeDotfiles.git
