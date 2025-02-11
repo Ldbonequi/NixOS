@@ -3,7 +3,7 @@
 {
   # Declare the packages to be included in the system environment
   environment.systemPackages = with pkgs; [
-    vscode
+    vscode-fhs
     git
       gh #git hub cli for auth
     neovim #text editor
