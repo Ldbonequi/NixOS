@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     stylix.url = "github:danth/stylix";
+    vscode.url = "path:./nixos/dotfiles/VsCodeDotfiles"
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -28,7 +29,6 @@
           inputs.stylix.nixosModules.stylix
 
           # Reference the file from the submodule directly
-          ./nixos/dotfiles/VsCodeDotfiles/keybindings.json
         ];
       };
     };
