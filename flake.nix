@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     stylix.url = "github:danth/stylix";
+		inputs.vscode.url = "path:./nixos/dotfiles/VsCodeDotfiles";
 
     home-manager = {
     	url = "github:nix-community/home-manager";
@@ -29,10 +30,11 @@
 		myNixos = nixpkgs.lib.nixosSystem {
 		specialArgs = {inherit inputs system;};
 
-		modules = [ 
-		./nixos/configuration.nix
-		inputs.stylix.nixosModules.stylix
-		];
+	modules = [
+  ./nixos/configuration.nix
+  inputs.stylix.nixosModules.stylix
+	"${inputs.vscode}/keybindings.json"
+	];
 
 	};
     };
