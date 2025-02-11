@@ -6,39 +6,31 @@
     stylix.url = "github:danth/stylix";
 
     home-manager = {
-    	url = "github:nix-community/home-manager";
-	inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
-  self = {
-      url = "git+file://.?submodules=1";
-    };
-
-  outputs = { self, nixpkgs, ... }@inputs: 
-  
+  outputs = { self, nixpkgs, ... }@inputs:
   let
-  	system = "x86_64-linux";
-	pkgs = import nixpkgs {
-		inherit system;
-	
-		config = {
-			allowUnfree = true;
-		};
-	};
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config = { allowUnfree = true; };
+    };
+  in {
+    nixosConfigurations = {
+      myNixos = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs system; };
 
-  in{
-	nixosConfigurations = {
-		myNixos = nixpkgs.lib.nixosSystem {
-		specialArgs = {inherit inputs system;};
+        modules = [
+          ./nixos/configuration.nix
+          inputs.stylix.nixosModules.stylix
 
-	modules = [
-  ./nixos/configuration.nix
-  inputs.stylix.nixosModules.stylix
-	];
-
-	};
+          # Reference the file from the submodule directly
+          ./nixos/dotfiles/VsCodeDotfiles/keybindings.json
+        ];
+      };
     };
   };
 }
