@@ -12,6 +12,10 @@
 
   };
 
+  self = {
+      url = "git+file://.?submodules=1";
+    };
+
   outputs = { self, nixpkgs, ... }@inputs: 
   
   let
@@ -32,7 +36,6 @@
 	modules = [
   ./nixos/configuration.nix
   inputs.stylix.nixosModules.stylix
-	./nixos/dotfiles/VsCodeDotfiles/keybindings.json
 	];
 
 	};
