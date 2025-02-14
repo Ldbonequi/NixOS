@@ -18,16 +18,25 @@
   ./nixosModules/protonGE.nix
   ./nixosModules/steam.nix
   ./nixosModules/bluetooth.nix
+  ./nixosModules/thunar.nix
  
 	inputs.home-manager.nixosModules.home-manager
   ];
 
   environment.systemPackages = with pkgs; [
   # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  nh #nix helper
+  iwgtk #wifi gui
+  pavucontrol #sound gui
+  wlogout #logout gui?
   ];
-  
+
+  environment.sessionVariables = { 
+    FLAKE = "/home/leob/mysystem";
+  };
+
   #gaming
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   };
   services.xserver.videoDrivers = ["amdgpu"];
@@ -51,14 +60,14 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  #networking.networkmanager.enable = true;
+  networking.wireless.iwd.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Denver";
@@ -81,6 +90,13 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+services.xserver.displayManager.setupCommands = ''
+  for output in $(xrandr | grep " connected" | awk '{print $1}'); do
+    xrandr --output $output --mode 1920x1080 --pos 0x0
+  done
+'';
+
+
   # Enable the GNOME Desktop Environment.
   #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
@@ -95,7 +111,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

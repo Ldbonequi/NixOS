@@ -10,6 +10,8 @@
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": ["mpris"],
   "modules-right": [
+    "custom/bluetooth",
+    "custom/wifi",
     "cpu",
     "memory",
     "pulseaudio",
@@ -81,6 +83,11 @@
   "memory": {
     "format": " {used:0.1f}Gi",
   },
+  "custom/wifi": {
+    "on-click": "iwgtk",
+    "format": "󰤨"
+  },
+  
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": "  muted",

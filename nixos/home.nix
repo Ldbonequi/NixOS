@@ -53,7 +53,7 @@ stylix = {
 enable = true;
 targets.qt.enable = true;
 targets.gtk.enable = true;
-targets.qt.platform = "xdgdesktopportal";
+targets.qt.platform = "qtct";
 
 };
 
