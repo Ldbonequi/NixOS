@@ -9,31 +9,7 @@
     settings = {
       "$schema" = "https://starship.rs/config-schema.json";
 
-      format = ''
-[](fg:gruvbox_surface)\
-$os\
-$username\
-[](fg:gruvbox_surface bg:gruvbox_peach)\
-$directory\
-[](fg:gruvbox_peach bg:gruvbox_green)\
-$git_branch\
-$git_status\
-[](fg:gruvbox_green bg:gruvbox_aqua)\
-$c\
-$rust\
-$golang\
-$nodejs\
-$php\
-$java\
-$kotlin\
-$haskell\
-$python\
-[](fg:gruvbox_aqua bg:gruvbox_blue)\
-$docker_context\
-[](fg:gruvbox_blue bg:gruvbox_purple)\
-$time\
-[ ](fg:gruvbox_purple)\
-$line_break$character'';
+      format = ''[](fg:gruvbox_surface)$os$username[](fg:gruvbox_surface bg:gruvbox_peach)$directory[](fg:gruvbox_peach bg:gruvbox_green)$git_branch$git_status[](fg:gruvbox_green bg:gruvbox_aqua)$c$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:gruvbox_aqua bg:gruvbox_blue)$docker_context[](fg:gruvbox_blue bg:gruvbox_purple)$time[ ](fg:gruvbox_purple)$line_break$character'';
 
       palette = "gruvbox_dark_medium";
 
