@@ -9,15 +9,16 @@
     unzip #.zip
     gzip #.gz .bz2
     p7zip #.7z
-    tar #.tar
+    gnutar #.tar
   ];
 
+  programs.thunar.enable = true;
   programs.thunar.plugins = with pkgs.xfce; [
     thunar-archive-plugin
     thunar-volman
   ];
   services.gvfs.enable = true;
   services.tumbler.enable = true;
-
+  programs.file-roller.enable = true;
 }
 

@@ -7,7 +7,10 @@
 
 	stylix.cursor.package = pkgs.bibata-cursors;
 	stylix.cursor.name = "Bibata-Modern-Ice";
+	stylix.cursor.size = 24;
 	stylix.polarity = "dark";
+	
+	#stylix.targets.starship.enable = false;
 	
 
 

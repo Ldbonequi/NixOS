@@ -14,6 +14,7 @@
 	./nixosModules/hyprland.nix
 	./nixosModules/home-manager.nix
 	./nixosModules/stylix.nix
+	./nixosModules/starship.nix
 	./nixosModules/alacritty.nix
   ./nixosModules/protonGE.nix
   ./nixosModules/steam.nix
@@ -25,10 +26,13 @@
 
   environment.systemPackages = with pkgs; [
   # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  nh #nix helper
-  iwgtk #wifi gui
-  pavucontrol #sound gui
-  wlogout #logout gui?
+    nh #nix helper
+    iwgtk #wifi gui
+    pavucontrol #sound gui
+    wlogout #logout gui?
+    wineWowPackages.stable   # Supports both 32-bit and 64-bit applications
+    winetricks #wine helper scripts
+    htop #task killer
   ];
 
   environment.sessionVariables = { 
@@ -39,7 +43,29 @@
   hardware.graphics = {
     enable = true;
   };
-  services.xserver.videoDrivers = ["amdgpu"];
+
+services.xserver = {
+  enable = true;
+    videoDrivers = [ "amdgpu" ]; # Or "radeon" for older cards
+    #monitorSection = ''
+      #Section "Monitor"
+      #  Identifier "HDMI-A-1"
+      #  Option "PreferredMode" "1920x1080"
+      #EndSection
+   # '';
+  # screenSection = ''
+     # Section "Screen"
+       # Identifier "Screen0"
+       # Monitor "HDMI-A-1"
+       # Device "Card0" # Assuming "Card0" is correct.  Check your Xorg.0.log for the proper Device name.
+       # DefaultDepth 24
+       # SubSection "Display"
+         # Depth 24
+         # Modes "1920x1080"
+       # </SubSection>
+     # </Section>
+   # '';
+};
 
   #flakes
   nix.settings.experimental-features = ["nix-command" "flakes" ];
@@ -88,13 +114,12 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
-services.xserver.displayManager.setupCommands = ''
-  for output in $(xrandr | grep " connected" | awk '{print $1}'); do
-    xrandr --output $output --mode 1920x1080 --pos 0x0
-  done
-'';
+#services.xserver.displayManager.setupCommands = ''
+#  for output in $(xrandr | grep " connected" | awk '{print $1}'); do
+#    xrandr --output $output --mode 1920x1080 --pos 0x0
+#  done
+#'';
 
 
   # Enable the GNOME Desktop Environment.

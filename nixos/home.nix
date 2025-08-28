@@ -18,13 +18,11 @@ home.stateVersion = "22.11";
 
 programs.home-manager.enable = true;
 programs.alacritty.enable = true;
-programs.starship.enable = true;
 
-home.file.".config/starship.toml".source = ./dotfiles/starship/starship.toml;
+#home.file.".config/starship.toml".source = ./dotfiles/starship/starship.toml;
 home.file.".config/waybar/config.jsonc".source = ./dotfiles/waybar/config.jsonc;
 home.file.".config/waybar/style.css".source = ./dotfiles/waybar/style.css;
 home.file.".config/hypr/hyprland.conf".source = ./dotfiles/hyprland/hyprland.conf;
-home.file.".config/Code/User/keybindings.json".source = ./dotfiles/vscode/keybindings.json;
 
 services.hyprpaper = {
   enable = true;

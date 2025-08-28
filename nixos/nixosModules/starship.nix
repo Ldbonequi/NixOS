@@ -1,0 +1,235 @@
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    starship
+  ];
+  programs.starship = {
+    enable = true;
+
+    settings = {
+      "$schema" = "https://starship.rs/config-schema.json";
+
+      format = ''
+[](fg:gruvbox_surface)\
+$os\
+$username\
+[](fg:gruvbox_surface bg:gruvbox_peach)\
+$directory\
+[](fg:gruvbox_peach bg:gruvbox_green)\
+$git_branch\
+$git_status\
+[](fg:gruvbox_green bg:gruvbox_aqua)\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:gruvbox_aqua bg:gruvbox_blue)\
+$docker_context\
+[](fg:gruvbox_blue bg:gruvbox_purple)\
+$time\
+[ ](fg:gruvbox_purple)\
+$line_break$character'';
+
+      palette = "gruvbox_dark_medium";
+
+      palettes = {
+        gruvbox_dark_medium = {
+          gruvbox_dark0_hard = "#1d2021";
+          gruvbox_dark0 = "#282828";
+          gruvbox_dark0_soft = "#32302f";
+          gruvbox_dark1 = "#3c3836";
+          gruvbox_dark2 = "#504945";
+          gruvbox_dark3 = "#665c54";
+          gruvbox_dark4 = "#7c6f64";
+
+          gruvbox_light0_hard = "#f9f5d7";
+          gruvbox_light0 = "#fbf1c7";
+          gruvbox_light0_soft = "#f2e5bc";
+          gruvbox_light1 = "#ebdbb2";
+          gruvbox_light2 = "#d5c4a1";
+          gruvbox_light3 = "#bdae93";
+          gruvbox_light4 = "#a89984";
+
+          gruvbox_neutral_red = "#cc241d";
+          gruvbox_neutral_green = "#98971a";
+          gruvbox_neutral_yellow = "#d79921";
+          gruvbox_neutral_blue = "#458588";
+          gruvbox_neutral_purple = "#b16286";
+          gruvbox_neutral_aqua = "#689d6a";
+          gruvbox_neutral_orange = "#d65d0e";
+
+          gruvbox_faded_red = "#9d0006";
+          gruvbox_faded_green = "#79740e";
+          gruvbox_faded_yellow = "#b57614";
+          gruvbox_faded_blue = "#076678";
+          gruvbox_faded_purple = "#8f3f71";
+          gruvbox_faded_aqua = "#427b58";
+          gruvbox_faded_orange = "#af3a03";
+
+          gruvbox_bright_red = "#fb4934";
+          gruvbox_bright_green = "#b8bb26";
+          gruvbox_bright_yellow = "#fabd2f";
+          gruvbox_bright_blue = "#83a598";
+          gruvbox_bright_purple = "#d3869b";
+          gruvbox_bright_aqua = "#8ec07c";
+          gruvbox_bright_orange = "#fe8019";
+
+          # Aliases
+          base = "#282828";
+          surface = "#3c3836";
+          text = "#ebdbb2";
+          gruvbox_peach = "#fabd2f";
+          gruvbox_green = "#b8bb26";
+          gruvbox_aqua = "#8ec07c";
+          gruvbox_blue = "#83a598";
+          gruvbox_purple = "#d3869b";
+          gruvbox_surface = "#1d2021";
+        };
+      };
+
+      os = {
+        disabled = false;
+        style = "bg:gruvbox_surface fg:text";
+        symbols = {
+          Windows = "󰍲";
+          Ubuntu = "󰕈";
+          SUSE = "";
+          Raspbian = "󰐿";
+          Mint = "󰣭";
+          Macos = "";
+          Manjaro = "";
+          Linux = "󰌽";
+          Gentoo = "󰣨";
+          Fedora = "󰣛";
+          Alpine = "";
+          Amazon = "";
+          Android = "";
+          Arch = "󰣇";
+          Artix = "󰣇";
+          CentOS = "";
+          Debian = "󰣚";
+          Redhat = "󱄛";
+          RedHatEnterprise = "󱄛";
+        };
+      };
+
+      username = {
+        show_always = true;
+        style_user = "bg:gruvbox_surface fg:text";
+        style_root = "bg:gruvbox_surface fg:text";
+        format = "[ $user ]($style)";
+      };
+
+      directory = {
+        style = "fg:base bg:gruvbox_peach";
+        format = "[ $path ]($style)";
+        truncation_length = 3;
+        truncation_symbol = "…/";
+        substitutions = {
+          "Documents" = "󰈙 ";
+          "Downloads" = " ";
+          "Music" = "󰝚 ";
+          "Pictures" = " ";
+          "Developer" = "󰲋 ";
+        };
+      };
+
+      git_branch = {
+        symbol = "";
+        style = "bg:gruvbox_green";
+        format = ''[[ $symbol $branch ](fg:base bg:gruvbox_green)]($style)'';
+      };
+
+      git_status = {
+        style = "bg:gruvbox_green";
+        format = ''[[($all_status$ahead_behind )](fg:base bg:gruvbox_green)]($style)'';
+      };
+
+      nodejs = {
+        symbol = "";
+        style = "bg:gruvbox_aqua";
+        format = ''[[ $symbol( $version) ](fg:base bg:gruvbox_aqua)]($style)'';
+      };
+
+      c = {
+        symbol = " ";
+        style = "bg:gruvbox_aqua";
+        format = ''[[ $symbol( $version) ](fg:base bg:gruvbox_aqua)]($style)'';
+      };
+
+      rust = {
+        symbol = "";
+        style = "bg:gruvbox_aqua";
+        format = ''[[ $symbol( $version) ](fg:base bg:gruvbox_aqua)]($style)'';
+      };
+
+      golang = {
+        symbol = "";
+        style = "bg:gruvbox_aqua";
+        format = ''[[ $symbol( $version) ](fg:base bg:gruvbox_aqua)]($style)'';
+      };
+
+      php = {
+        symbol = "";
+        style = "bg:gruvbox_aqua";
+        format = ''[[ $symbol( $version) ](fg:base bg:gruvbox_aqua)]($style)'';
+      };
+
+      java = {
+        symbol = " ";
+        style = "bg:gruvbox_aqua";
+        format = ''[[ $symbol( $version) ](fg:base bg:gruvbox_aqua)]($style)'';
+      };
+
+      kotlin = {
+        symbol = "";
+        style = "bg:gruvbox_aqua";
+        format = ''[[ $symbol( $version) ](fg:base bg:gruvbox_aqua)]($style)'';
+      };
+
+      haskell = {
+        symbol = "";
+        style = "bg:gruvbox_aqua";
+        format = ''[[ $symbol( $version) ](fg:base bg:gruvbox_aqua)]($style)'';
+      };
+
+      python = {
+        symbol = "";
+        style = "bg:gruvbox_aqua";
+        format = ''[[ $symbol( $version) ](fg:base bg:gruvbox_aqua)]($style)'';
+      };
+
+      docker_context = {
+        symbol = "";
+        style = "bg:surface";
+        format = ''[[ $symbol( $context) ](fg:gruvbox_bright_aqua bg:surface)]($style)'';
+      };
+
+      time = {
+        disabled = false;
+        time_format = "%R";
+        style = "bg:gruvbox_purple";
+        format = ''[[  $time ](fg:surface bg:gruvbox_purple)]($style)'';
+      };
+
+      line_break = {
+        disabled = false;
+      };
+
+      character = {
+        disabled = false;
+        success_symbol = "[](bold fg:gruvbox_bright_green)";
+        error_symbol = "[](bold fg:gruvbox_bright_red)";
+        vimcmd_symbol = "[](bold fg:gruvbox_bright_green)";
+        vimcmd_replace_one_symbol = "[](bold fg:gruvbox_bright_purple)";
+        vimcmd_replace_symbol = "[](bold fg:gruvbox_bright_purple)";
+        vimcmd_visual_symbol = "[](bold fg:gruvbox_bright_purple)";
+      };
+    };
+  };
+}

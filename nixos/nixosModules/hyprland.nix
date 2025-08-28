@@ -10,6 +10,8 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true; # Enable XWayland for compatibility with X11 apps
+    
+
   };
 
   # Add Hyprland session file for GDM

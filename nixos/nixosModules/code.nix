@@ -10,5 +10,6 @@
     	wl-clipboard #allow nvim to access system keyboard
     jdk23 #java stable 23
     gradle #java build system
+    python3 #python stable build 
   ];
 }

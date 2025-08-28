@@ -1,3 +1,5 @@
+# Note: This is kept only for reference/portability. On NixOS the source of truth is programs.starship.settings.
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
