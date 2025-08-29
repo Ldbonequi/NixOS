@@ -13,6 +13,7 @@
 	./nixosModules/code.nix
 	./nixosModules/hyprland.nix
 	./nixosModules/home-manager.nix
+	./nixosModules/stylix.nix
 	./nixosModules/starship.nix
 	./nixosModules/alacritty.nix
   ./nixosModules/protonGE.nix
@@ -24,6 +25,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+  # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     nh #nix helper
     iwgtk #wifi gui
     pavucontrol #sound gui
