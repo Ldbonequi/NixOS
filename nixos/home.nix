@@ -37,13 +37,15 @@ services.hyprpaper = {
   };
 };
 
-  programs.rofi = {
-    enable = true;
-    extraConfig = {
-      "show-icons" = true;
-      "icon-theme" = "Papirus";
-    };
+programs.rofi = {
+  enable = true;
+  extraConfig = {
+    "show-icons" = true;
+    "icon-theme" = "Papirus";
   };
+};
+
+programs.mako.enable = true;
 
 stylix = {
   enable = true;

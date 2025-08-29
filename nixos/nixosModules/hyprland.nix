@@ -35,6 +35,8 @@ environment.etc."usr/share/wayland-sessions/hyprland.desktop".text = ''
     rofi-wayland #app launcher
     hyprpaper #wallpaper manager
     hyprshot #screenshot tool
+    playerctl #media player commmandline utility (allows skip button on keyboard) 
+    mako #notification daemon
   ];
 
   # Optional: Automatically start Alacritty and Waybar in Hyprland
