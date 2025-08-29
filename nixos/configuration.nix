@@ -37,6 +37,10 @@
 
   environment.sessionVariables = { 
     FLAKE = "/home/leob/mysystem";
+    NH_FLAKE = "/home/leob/mysystem";
+    NH_OS_FLAKE = "/home/leob/mysystem#nixosConfigurations/nixos";
+    # Optional: enable if your flake defines homeConfigurations
+    # NH_HOME_FLAKE = "/home/leob/mysystem#homeConfigurations/leob@nixos";
   };
 
   #gaming

@@ -2,6 +2,7 @@
 { config, pkgs, ... }:
 {
 
+	stylix.enable = true;
 	stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
 	stylix.image = ../dotfiles/Aurora.jpg;
 
@@ -11,8 +12,6 @@
 	stylix.polarity = "dark";
 	
 	#stylix.targets.starship.enable = false;
-	
-
 
 	stylix.fonts = {
 	  monospace = {

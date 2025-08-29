@@ -45,14 +45,11 @@ services.hyprpaper = {
     };
   };
 
-
-
 stylix = {
-enable = true;
-targets.qt.enable = true;
-targets.gtk.enable = true;
-targets.qt.platform = "qtct";
-
+  enable = true;
+  targets.qt.enable = true;
+  targets.gtk.enable = true;
+  targets.qt.platform = "qtct";
 };
 
 }

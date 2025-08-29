@@ -3,15 +3,13 @@
 {
   # Enable X server and GDM (GNOME Display Manager)
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.wayland = true;
+  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.wayland = true;
 
   # Enable Hyprland
   programs.hyprland = {
     enable = true;
     xwayland.enable = true; # Enable XWayland for compatibility with X11 apps
-    
-
   };
 
   # Add Hyprland session file for GDM
