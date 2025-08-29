@@ -1,6 +1,9 @@
-{config, pkgs, ...}:
+{ inputs, config, pkgs, ... }:
 
 {
+  imports = [
+    inputs.stylix.homeModules.stylix
+  ];
 
 home.username = "leob";
 
@@ -45,14 +48,38 @@ services.hyprpaper = {
     };
   };
 
-
-
 stylix = {
-enable = true;
-targets.qt.enable = true;
-targets.gtk.enable = true;
-targets.qt.platform = "qtct";
+  enable = true;
 
+  # Theme and wallpaper
+  base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+  image = ./dotfiles/Aurora.jpg;
+
+  # Cursor
+  cursor.package = pkgs.bibata-cursors;
+  cursor.name = "Bibata-Modern-Ice";
+  cursor.size = 24;
+
+  # Fonts
+  fonts = {
+    monospace = {
+      package = pkgs.nerd-fonts.jetbrains-mono;
+      name = "JetBrainsMono Nerd Font Mono";
+    };
+    sansSerif = {
+      package = pkgs.dejavu_fonts;
+      name = "DejaVu Sans";
+    };
+    serif = {
+      package = pkgs.dejavu_fonts;
+      name = "DejaVu Serif";
+    };
+  };
+
+  # Targets
+  targets.qt.enable = true;
+  targets.gtk.enable = true;
+  targets.qt.platform = "qtct";
 };
 
 }

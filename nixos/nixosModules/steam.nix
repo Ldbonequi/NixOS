@@ -4,7 +4,6 @@
   environment.systemPackages = with pkgs; [
       steam
         mangohud #system monitor
-      torzu #yuzu fork 
   ];
 
   programs.steam.enable = true;
