@@ -34,6 +34,7 @@ environment.etc."usr/share/wayland-sessions/hyprland.desktop".text = ''
     waybar     # Status bar for Wayland compositors
     rofi-wayland #app launcher
     hyprpaper #wallpaper manager
+    hyprshot #screenshot tool
   ];
 
   # Optional: Automatically start Alacritty and Waybar in Hyprland
