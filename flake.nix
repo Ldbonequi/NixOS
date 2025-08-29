@@ -26,7 +26,6 @@
         modules = [
           ./nixos/configuration.nix
           inputs.stylix.nixosModules.stylix
-
         ];
       };
     };
