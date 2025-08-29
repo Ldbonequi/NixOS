@@ -52,11 +52,13 @@ stylix = {
   targets.qt.platform = "qtct";
 };
 
-services.mako {
+services.mako = {
   enable = true;
-  default-timeout = 750;
-  ignore-timeout = true;
-  max-visible=3;
-}
+  settings = {
+    default-timeout = 2000;
+    ignore-timeout = true;
+    max-visible = 3;
+  };
+};
 
 }
