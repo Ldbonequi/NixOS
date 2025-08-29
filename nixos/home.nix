@@ -45,13 +45,18 @@ programs.rofi = {
   };
 };
 
-programs.mako.enable = true;
-
 stylix = {
   enable = true;
   targets.qt.enable = true;
   targets.gtk.enable = true;
   targets.qt.platform = "qtct";
 };
+
+services.mako {
+  enable = true;
+  default-timeout = 750;
+  ignore-timeout = true;
+  max-visible=3;
+}
 
 }
