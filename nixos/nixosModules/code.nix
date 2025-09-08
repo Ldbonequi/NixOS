@@ -17,5 +17,6 @@
     python3 #python stable build 
     gpclient #csu connection vpn
       globalprotect-openconnect #gui for gpclient
+    cowsay #cow
   ];
 }
