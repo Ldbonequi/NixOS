@@ -14,7 +14,11 @@
     	wl-clipboard #allow nvim to access system keyboard
     jdk23 #java stable 23
     gradle #java build system
-    python3 #python stable build 
+    (python3.withPackages(p: with p; [ #python stable build with packages below use instead of pip
+      numpy
+      pandas
+      pycodestyle
+    ])) 
     gpclient #csu connection vpn
       globalprotect-openconnect #gui for gpclient
     cowsay #cow
