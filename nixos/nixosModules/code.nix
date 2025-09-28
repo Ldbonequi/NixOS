@@ -13,7 +13,8 @@
     neovim #text editor
     	wl-clipboard #allow nvim to access system keyboard
     jdk23 #java stable 23
-    gradle #java build system
+      gradle #java build system
+      Maven #Build automation tool for java
     (python3.withPackages(p: with p; [ #python stable build with packages below use instead of pip
       numpy #math
       pandas #math / linear algebra stuff
