@@ -21,6 +21,7 @@
       pycodestyle #detect pep 8 errors in python
       autopep8 #auto python formater to pep8 standard
     ])) 
+    postman #postman webhook testing
     gpclient #csu connection vpn
       globalprotect-openconnect #gui for gpclient
     cowsay #cow
