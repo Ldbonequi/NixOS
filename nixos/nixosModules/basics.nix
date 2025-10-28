@@ -8,6 +8,7 @@
     obsidian #notes
     vesktop #discord with vencord and more linux support
     _1password-gui #1password
+    zoom-us #zoom meeting software
   ];
 }
 
