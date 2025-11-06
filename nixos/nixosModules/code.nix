@@ -25,5 +25,6 @@
     gpclient #csu connection vpn
       globalprotect-openconnect #gui for gpclient
     cowsay #cow
+    pipes #pipes terminal screen saver
   ];
 }
