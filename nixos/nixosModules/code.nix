@@ -12,7 +12,7 @@
       gh #git hub cli for auth
     neovim #text editor
     	wl-clipboard #allow nvim to access system keyboard
-    jdk23 #java stable 23
+    jdk21 #java stable 21
       gradle #java build system
       maven #Build automation tool for java
     (python3.withPackages(p: with p; [ #python stable build with packages below use instead of pip
@@ -22,8 +22,8 @@
       autopep8 #auto python formater to pep8 standard
     ])) 
     postman #postman webhook testing
-    gpclient #csu connection vpn
-      globalprotect-openconnect #gui for gpclient
+    #gpclient #csu connection vpn
+      #globalprotect-openconnect #gui for gpclient
     cowsay #cow
     pipes #pipes terminal screen saver
   ];

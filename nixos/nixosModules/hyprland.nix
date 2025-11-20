@@ -32,7 +32,7 @@ environment.etc."usr/share/wayland-sessions/hyprland.desktop".text = ''
   # Install required packages (only swww, waybar, and alacritty)
   environment.systemPackages = with pkgs; [
     waybar     # Status bar for Wayland compositors
-    rofi-wayland #app launcher
+    rofi #app launcher
     hyprpaper #wallpaper manager
     hyprshot #screenshot tool
     playerctl #media player commmandline utility (allows skip button on keyboard) 
