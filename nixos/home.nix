@@ -45,6 +45,16 @@ programs.rofi = {
   };
 };
 
+programs.firefox = {
+    enable = true;
+    profiles = {
+      "default" = {
+        id = 0;
+        name = "default";
+      };
+    };
+  };
+
 stylix = {
   enable = true;
   targets.qt.enable = true;

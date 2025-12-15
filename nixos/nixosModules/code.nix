@@ -8,6 +8,10 @@
   # Declare the packages to be included in the system environment
   environment.systemPackages = with pkgs; [
     vscode-fhs
+    emacs
+    fzf #fuzzy find fast
+    ripgrep #grep fast
+    cmake
     git
       gh #git hub cli for auth
     neovim #text editor
@@ -24,6 +28,8 @@
     postman #postman webhook testing
     #gpclient #csu connection vpn
       #globalprotect-openconnect #gui for gpclient
+    gcc #c++
+    gnumake #makefiles for c++
     cowsay #cow
     pipes #pipes terminal screen saver
   ];
