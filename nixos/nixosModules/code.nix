@@ -12,6 +12,7 @@
     fzf #fuzzy find fast
     ripgrep #grep fast
     cmake
+      libtool
     git
       gh #git hub cli for auth
     neovim #text editor
