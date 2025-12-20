@@ -9,6 +9,8 @@
   environment.systemPackages = with pkgs; [
     vscode-fhs
     emacs
+      clang-tools #c++ emacs lsp
+      wtype
     fzf #fuzzy find fast
     ripgrep #grep fast
     cmake
@@ -18,6 +20,7 @@
     neovim #text editor
     	wl-clipboard #allow nvim to access system keyboard
     jdk21 #java stable 21
+      jdt-language-server #jdtls
       gradle #java build system
       maven #Build automation tool for java
     (python3.withPackages(p: with p; [ #python stable build with packages below use instead of pip
@@ -25,7 +28,8 @@
       pandas #math / linear algebra stuff
       pycodestyle #detect pep 8 errors in python
       autopep8 #auto python formater to pep8 standard
-    ])) 
+    ]))
+      pyright #python lsp
     postman #postman webhook testing
     #gpclient #csu connection vpn
       #globalprotect-openconnect #gui for gpclient
