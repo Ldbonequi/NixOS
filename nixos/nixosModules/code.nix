@@ -8,34 +8,54 @@
   # Declare the packages to be included in the system environment
   environment.systemPackages = with pkgs; [
     vscode-fhs
-    emacs
-      clang-tools #c++ emacs lsp
-      wtype
-    fzf #fuzzy find fast
-    ripgrep #grep fast
+    fzf # fuzzy find fast
+    fd # better find
+    ripgrep # grep fast
     cmake
-      libtool
+    libtool
     git
-      gh #git hub cli for auth
-    neovim #text editor
-    	wl-clipboard #allow nvim to access system keyboard
-    jdk21 #java stable 21
-      jdt-language-server #jdtls
-      gradle #java build system
-      maven #Build automation tool for java
-    (python3.withPackages(p: with p; [ #python stable build with packages below use instead of pip
-      numpy #math
-      pandas #math / linear algebra stuff
-      pycodestyle #detect pep 8 errors in python
-      autopep8 #auto python formater to pep8 standard
-    ]))
-      pyright #python lsp
-    postman #postman webhook testing
+    gh # git hub cli for auth
+    neovim # text editor
+    wl-clipboard # allow nvim to access system keyboard
+    pkg-config
+    openssl
+    zlib
+    nodejs # build tools maybe redundant
+    jdk21 # java stable 21
+    gradle # java build system
+    maven # Build automation tool for java
+    (python3.withPackages (
+      p: with p; [
+        # python stable build with packages below use instead of pip
+        pycodestyle # python linter
+        autopep8 # python formatter
+      ]
+    ))
+    postman # postman webhook testing
     #gpclient #csu connection vpn
-      #globalprotect-openconnect #gui for gpclient
-    gcc #c++
-    gnumake #makefiles for c++
-    cowsay #cow
-    pipes #pipes terminal screen saver
+    #globalprotect-openconnect #gui for gpclient
+    gcc # c++
+    curl # download and create packages
+    gnumake # makefiles for c++
+    cowsay # cow
+    pipes # pipes terminal screen saver
+
+    #Lsps
+    pyright # python
+    nil # nil_ls (nix)
+    lua-language-server # lua
+    jdt-language-server # jdtls (java)
+    marksman # lang.markdown LSP
+
+    #formaters / linters
+    statix # Nix linter
+    selene # Lua linter (LazyVim default)
+    stylua # Lua formatter
+    nixpkgs-fmt # Nix formatter
+    black # Python formatter
+    ruff # Python linter
+
+    #Debug adapter protocol
+    lldb # python
   ];
 }
