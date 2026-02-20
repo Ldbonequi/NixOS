@@ -7,6 +7,8 @@
     firefox     # Firefox browser
     obsidian # notes
     vesktop #discord with vencord and more linux support
+      pipewire #screenshare sound util
+      wireplumber #screenshare video util
     _1password-gui #1password
     zoom-us #zoom meeting software
   ];

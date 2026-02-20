@@ -2,22 +2,25 @@
 
 {
   environment.systemPackages = with pkgs; [
-    xfce.thunar #file browser
-    
+    thunar # file browser
+    file-roller # gui archive manager
+
     #archive programs
-    zip #.zip
-    unzip #.zip
-    gzip #.gz .bz2
-    p7zip #.7z
-    gnutar #.tar
+    zip # .zip
+    unzip # .zip
+    gzip # .gz .bz2
+    p7zip # .7z
+    gnutar # .tar
   ];
 
-  programs.thunar.enable = true;
-  programs.thunar.plugins = with pkgs.xfce; [
-    thunar-archive-plugin
-    thunar-volman
-  ];
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
+
   services.gvfs.enable = true;
   services.tumbler.enable = true;
 }
-
