@@ -2,40 +2,45 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ 
-	# Include the results of the hardware scan.
-	./hardware-configuration.nix
-	./nixosModules/basics.nix
-	./nixosModules/code.nix
-	./nixosModules/hyprland.nix
-	./nixosModules/home-manager.nix
-	./nixosModules/stylix.nix
-	./nixosModules/starship.nix
-	./nixosModules/alacritty.nix
-  ./nixosModules/protonGE.nix
-  ./nixosModules/steam.nix
-  ./nixosModules/bluetooth.nix
-  ./nixosModules/thunar.nix
- 
-	inputs.home-manager.nixosModules.home-manager
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./nixosModules/basics.nix
+    ./nixosModules/code.nix
+    ./nixosModules/hyprland.nix
+    ./nixosModules/home-manager.nix
+    ./nixosModules/stylix.nix
+    ./nixosModules/starship.nix
+    ./nixosModules/alacritty.nix
+    ./nixosModules/protonGE.nix
+    ./nixosModules/steam.nix
+    ./nixosModules/bluetooth.nix
+    ./nixosModules/thunar.nix
+    ./nixosModules/minecraft.nix
+
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   environment.systemPackages = with pkgs; [
-  # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    nh #nix helper
-    iwgtk #wifi gui
-    pavucontrol #sound gui
-    wlogout #logout gui?
-    wineWowPackages.stable   # Supports both 32-bit and 64-bit applications
-    winetricks #wine helper scripts
-    htop #task killer
+    # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    nh # nix helper
+    iwgtk # wifi gui
+    pavucontrol # sound gui
+    wlogout # logout gui?
+    wineWow64Packages.stable # Supports both 32-bit and 64-bit applications
+    winetricks # wine helper scripts
+    htop # task killer
   ];
 
-  environment.sessionVariables = { 
+  environment.sessionVariables = {
     FLAKE = "/home/leob/mysystem";
     NH_FLAKE = "/home/leob/mysystem";
     NH_OS_FLAKE = "/home/leob/mysystem";
@@ -48,42 +53,45 @@
     enable = true;
   };
 
-services.xserver = {
-  enable = true;
+  services.xserver = {
+    enable = true;
     videoDrivers = [ "amdgpu" ]; # Or "radeon" for older cards
     #monitorSection = ''
-      #Section "Monitor"
-      #  Identifier "HDMI-A-1"
-      #  Option "PreferredMode" "1920x1080"
-      #EndSection
-   # '';
-  # screenSection = ''
-     # Section "Screen"
-       # Identifier "Screen0"
-       # Monitor "HDMI-A-1"
-       # Device "Card0" # Assuming "Card0" is correct.  Check your Xorg.0.log for the proper Device name.
-       # DefaultDepth 24
-       # SubSection "Display"
-         # Depth 24
-         # Modes "1920x1080"
-       # </SubSection>
-     # </Section>
-   # '';
-};
-
-  #flakes
-  nix.settings.experimental-features = ["nix-command" "flakes" ];
-
-  home-manager.users = {
-		leob = import ./home.nix;
-	};
-  home-manager.extraSpecialArgs = {
-  	inherit inputs;
+    #Section "Monitor"
+    #  Identifier "HDMI-A-1"
+    #  Option "PreferredMode" "1920x1080"
+    #EndSection
+    # '';
+    # screenSection = ''
+    # Section "Screen"
+    # Identifier "Screen0"
+    # Monitor "HDMI-A-1"
+    # Device "Card0" # Assuming "Card0" is correct.  Check your Xorg.0.log for the proper Device name.
+    # DefaultDepth 24
+    # SubSection "Display"
+    # Depth 24
+    # Modes "1920x1080"
+    # </SubSection>
+    # </Section>
+    # '';
   };
 
-	security.sudo.extraConfig = ''
-	  Defaults pwfeedback
-	''; 
+  #flakes
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  home-manager.users = {
+    leob = import ./home.nix;
+  };
+  home-manager.extraSpecialArgs = {
+    inherit inputs;
+  };
+
+  security.sudo.extraConfig = ''
+    	  Defaults pwfeedback
+    	'';
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -119,12 +127,11 @@ services.xserver = {
 
   # Enable the X11 windowing system.
 
-#services.xserver.displayManager.setupCommands = ''
-#  for output in $(xrandr | grep " connected" | awk '{print $1}'); do
-#    xrandr --output $output --mode 1920x1080 --pos 0x0
-#  done
-#'';
-
+  #services.xserver.displayManager.setupCommands = ''
+  #  for output in $(xrandr | grep " connected" | awk '{print $1}'); do
+  #    xrandr --output $output --mode 1920x1080 --pos 0x0
+  #  done
+  #'';
 
   # Enable the GNOME Desktop Environment.
   #services.xserver.displayManager.gdm.enable = true;
@@ -162,17 +169,32 @@ services.xserver = {
   users.users.leob = {
     isNormalUser = true;
     description = "Leo Bonequi";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  
+  xdg.portal = {
+    # enable screensharing
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config.common.default = [
+      "hyprland"
+      "gtk"
+    ];
+  };
 
+  programs.nix-ld.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
