@@ -29,6 +29,7 @@
         # python stable build with packages below use instead of pip
         pycodestyle # python linter
         autopep8 # python formatter
+        ipykernel
       ]
     ))
     postman # postman webhook testing

@@ -2,9 +2,11 @@
 
 {
   # Enable X server and GDM (GNOME Display Manager)
-  services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.displayManager.gdm.wayland = true;
+  services = {
+    xserver.enable = true;
+    displayManager.gdm.enable = true;
+    displayManager.gdm.wayland = true;
+  };
 
   # Enable Hyprland
   programs.hyprland = {
@@ -34,7 +36,9 @@
     waybar # Status bar for Wayland compositors
     rofi # app launcher
     hyprpaper # wallpaper manager
-    hyprshot # screenshot tool
+    grim # screenshot tool
+    swappy # small editor
+    slurp # region selector
     playerctl # media player commmandline utility (allows skip button on keyboard)
     mako # notification daemon
   ];
