@@ -15,6 +15,7 @@
     libtool
     git
     gh # git hub cli for auth
+    lazygit # git tui
     neovim # text editor
     wl-clipboard # allow nvim to access system keyboard
     pkg-config
