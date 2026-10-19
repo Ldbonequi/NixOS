@@ -25,6 +25,7 @@
     ./nixosModules/bluetooth.nix
     ./nixosModules/thunar.nix
     ./nixosModules/minecraft.nix
+    ./nixosModules/editing.nix
 
     inputs.home-manager.nixosModules.home-manager
   ];
