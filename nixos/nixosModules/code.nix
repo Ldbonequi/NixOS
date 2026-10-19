@@ -7,6 +7,7 @@
 
   # Declare the packages to be included in the system environment
   environment.systemPackages = with pkgs; [
+    zoxide # fuzzy cd
     vscode-fhs
     fzf # fuzzy find fast
     fd # better find
